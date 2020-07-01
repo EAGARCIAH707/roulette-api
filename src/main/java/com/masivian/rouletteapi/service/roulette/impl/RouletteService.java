@@ -1,13 +1,22 @@
 package com.masivian.rouletteapi.service.roulette.impl;
 
 import com.masivian.rouletteapi.commons.domains.generic.RouletteDTO;
+import com.masivian.rouletteapi.repository.roulette.impl.IRouletteFacade;
 import com.masivian.rouletteapi.service.roulette.IRouletteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RouletteService implements IRouletteService {
+    private final IRouletteFacade rouletteFacade;
+
+    @Autowired
+    public RouletteService(IRouletteFacade rouletteFacade) {
+        this.rouletteFacade = rouletteFacade;
+    }
+
     @Override
     public RouletteDTO create(RouletteDTO roulette) {
         return null;

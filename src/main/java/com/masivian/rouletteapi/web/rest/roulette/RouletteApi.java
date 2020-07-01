@@ -52,7 +52,7 @@ public class RouletteApi {
         Boolean response = rouletteService.openRoulette(rouletteId);
         return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.builder()
                 .status(HttpStatus.OK)
-                .body("response")
+                .body(response)
                 .message(IResponseMessages.OK)
                 .transactionState(TransactionState.OK)
                 .build());
