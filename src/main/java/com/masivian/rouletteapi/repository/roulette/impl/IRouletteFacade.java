@@ -10,5 +10,5 @@ public interface IRouletteFacade {
 
     List<Roulette> findALl();
 
-    Optional<Roulette> findById(Integer rouletteId);
+    Optional<Roulette> findById(String rouletteId);
 }

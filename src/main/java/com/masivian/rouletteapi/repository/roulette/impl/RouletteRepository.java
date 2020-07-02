@@ -28,7 +28,7 @@ public class RouletteRepository implements IRouletteFacade {
     }
 
     @Override
-    public Optional<Roulette> findById(Integer rouletteId) {
+    public Optional<Roulette> findById(String rouletteId) {
         return rouletteRepository.findById(rouletteId);
     }
 }
