@@ -1,20 +1,24 @@
 package com.masivian.rouletteapi.model.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@XmlRootElement
-@EqualsAndHashCode
 @Data
 public class Bet implements Serializable {
     @Id
     Integer betId;
+    String color;
+    Integer number;
+    Double amount;
+    Integer userId;
+
+
 }

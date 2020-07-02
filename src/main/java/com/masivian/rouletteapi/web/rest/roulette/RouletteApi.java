@@ -6,6 +6,8 @@ import com.masivian.rouletteapi.commons.constants.messages.IResponseMessages;
 import com.masivian.rouletteapi.commons.domains.generic.RouletteDTO;
 import com.masivian.rouletteapi.commons.domains.response.BaseResponse;
 import com.masivian.rouletteapi.commons.enums.TransactionState;
+import com.masivian.rouletteapi.commons.exceptions.BusinessException;
+import com.masivian.rouletteapi.commons.exceptions.NotFoundException;
 import com.masivian.rouletteapi.service.roulette.IRouletteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,7 @@ public class RouletteApi {
     }
 
     @PostMapping(IEndpointRoulette.CREATE)
-    public ResponseEntity<?> createRoulette(@RequestBody RouletteDTO roulette) {
+    public ResponseEntity<?> createRoulette(@RequestBody RouletteDTO roulette) throws BusinessException {
         RouletteDTO response = rouletteService.create(roulette);
         return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse.builder()
                 .status(HttpStatus.CREATED)
@@ -48,7 +50,7 @@ public class RouletteApi {
     }
 
     @PatchMapping(IEndpointRoulette.OPEN)
-    public ResponseEntity<?> openRoulette(@PathVariable Integer rouletteId) {
+    public ResponseEntity<?> openRoulette(@PathVariable Integer rouletteId) throws NotFoundException {
         Boolean response = rouletteService.openRoulette(rouletteId);
         return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.builder()
                 .status(HttpStatus.OK)

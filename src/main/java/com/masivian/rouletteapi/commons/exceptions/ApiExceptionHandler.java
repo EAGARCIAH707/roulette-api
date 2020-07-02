@@ -1,6 +1,6 @@
 package com.masivian.rouletteapi.commons.exceptions;
 
-import com.masivian.rouletteapi.commons.constants.messages.ErrorMessages;
+import com.masivian.rouletteapi.commons.constants.messages.IErrorMessages;
 import com.masivian.rouletteapi.commons.domains.response.BaseResponse;
 import com.masivian.rouletteapi.commons.enums.TransactionState;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ public class ApiExceptionHandler {
     public ResponseEntity<?> systemException(Exception e) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(BaseResponse.builder()
                 .status(HttpStatus.CONFLICT)
-                .body(ErrorMessages.CONFLICT)
+                .body(IErrorMessages.CONFLICT)
                 .message(e.getMessage())
                 .transactionState(TransactionState.FAIL)
                 .build());

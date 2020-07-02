@@ -1,21 +1,23 @@
 package com.masivian.rouletteapi.model.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@XmlRootElement
-@EqualsAndHashCode
 @Data
 public class Roulette implements Serializable {
 
     @Id
     Integer rouletteId;
+    Boolean state;
+    Timestamp openingDate;
+    Timestamp closingDate;
 }
