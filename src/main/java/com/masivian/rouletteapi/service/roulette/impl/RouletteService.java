@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,14 +48,23 @@ public class RouletteService implements IRouletteService {
     }
 
     @Override
-    public Boolean openRoulette(Integer rouletteId) throws NotFoundException {
+    public Boolean openRoulette(String rouletteId) throws NotFoundException {
         Roulette roulette = findById(rouletteId);
         roulette.setState(Boolean.TRUE);
+        roulette.setOpenDate(Timestamp.from(Instant.now()));
         rouletteFacade.save(roulette);
         return Boolean.TRUE;
     }
 
-    private Roulette findById(Integer rouletteId) throws NotFoundException {
+    @Override
+    public Optional<Roulette> closeRoulette(String rouletteId) throws NotFoundException {
+        Roulette roulette = findById(rouletteId);
+        roulette.setState(Boolean.FALSE);
+        roulette.setCloseDate(Timestamp.from(Instant.now()));
+        return rouletteFacade.save(roulette);
+    }
+
+    public Roulette findById(String rouletteId) throws NotFoundException {
         Optional<Roulette> optRoulette = rouletteFacade.findById(rouletteId);
         if (optRoulette.isPresent()) {
             return optRoulette.get();
