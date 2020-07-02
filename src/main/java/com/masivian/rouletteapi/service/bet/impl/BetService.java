@@ -56,17 +56,31 @@ public class BetService implements IBetService {
     }
 
     private Bet validators(BetDTO bet) throws NotFoundException, BusinessException {
-        if (bet.getAmount() > 0 && bet.getAmount() <= 10000) {
-            Roulette roulette = rouletteService.findById(bet.getRouletteId());
-            if (roulette.getState()) {
-                return dtoToEntity(bet);
-            } else {
-                throw new BusinessException(IErrorMessages.CLOSED_ROULETTE);
-            }
-        } else {
+        validateAmount(bet);
+        validateNumber(bet);
+        validateRoulette(bet);
+        return dtoToEntity(bet);
+    }
+
+    private void validateAmount(BetDTO bet) throws BusinessException {
+        if (bet.getAmount() < 0 || bet.getAmount() > 10000) {
             throw new BusinessException(IErrorMessages.AMOUNT_EXCEEDED);
         }
+    }
 
+    private void validateNumber(BetDTO bet) throws BusinessException {
+        if (bet.getNumber() != null) {
+            if (bet.getNumber() < 0 || bet.getNumber() > 36) {
+                throw new BusinessException(IErrorMessages.INVALID_NUMBER);
+            }
+        }
+    }
+
+    private void validateRoulette(BetDTO bet) throws BusinessException, NotFoundException {
+        Roulette roulette = rouletteService.findById(bet.getRouletteId());
+        if (!roulette.getState()) {
+            throw new BusinessException(IErrorMessages.CLOSED_ROULETTE);
+        }
     }
 
     private List<Bet> findByRoulette(Roulette roulette) {
