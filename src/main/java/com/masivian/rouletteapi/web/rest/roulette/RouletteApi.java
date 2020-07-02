@@ -50,7 +50,7 @@ public class RouletteApi {
     }
 
     @PatchMapping(IEndpointRoulette.OPEN)
-    public ResponseEntity<?> openRoulette(@PathVariable Integer rouletteId) throws NotFoundException {
+    public ResponseEntity<?> openRoulette(@PathVariable String rouletteId) throws NotFoundException {
         Boolean response = rouletteService.openRoulette(rouletteId);
         return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.builder()
                 .status(HttpStatus.OK)

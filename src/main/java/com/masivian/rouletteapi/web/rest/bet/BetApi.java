@@ -7,6 +7,7 @@ import com.masivian.rouletteapi.commons.domains.generic.BetDTO;
 import com.masivian.rouletteapi.commons.domains.response.BaseResponse;
 import com.masivian.rouletteapi.commons.enums.TransactionState;
 import com.masivian.rouletteapi.commons.exceptions.BusinessException;
+import com.masivian.rouletteapi.commons.exceptions.NotFoundException;
 import com.masivian.rouletteapi.service.bet.IBetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,8 @@ public class BetApi {
     }
 
     @PostMapping(IEndpointBet.CREATE)
-    public ResponseEntity<?> bet(@RequestHeader("user-id") Integer userId,
-                                 @RequestBody BetDTO bet) throws BusinessException {
+    public ResponseEntity<?> bet(@RequestHeader("user-id") String userId,
+                                 @RequestBody BetDTO bet) throws BusinessException, NotFoundException {
         BetDTO response = betService.createBet(bet, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse.builder()
                 .status(HttpStatus.CREATED)
@@ -39,7 +40,7 @@ public class BetApi {
     }
 
     @PatchMapping(IEndpointBet.CLOSE)
-    public ResponseEntity<?> closeBets(@PathVariable Integer rouletteId) {
+    public ResponseEntity<?> closeBets(@PathVariable String rouletteId) throws NotFoundException, BusinessException {
         List<BetDTO> response = betService.closeBets(rouletteId);
         return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.builder()
                 .status(HttpStatus.OK)
