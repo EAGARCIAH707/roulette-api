@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,11 +15,13 @@ import java.io.Serializable;
 @Data
 public class Bet implements Serializable {
     @Id
-    Integer betId;
+    String betId;
     String color;
     Integer number;
     Double amount;
-    Integer userId;
+    String rouletteId;
+    User user;
+    Date date;
 
 
 }

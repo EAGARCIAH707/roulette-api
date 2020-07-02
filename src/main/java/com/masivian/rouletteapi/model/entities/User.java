@@ -4,22 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Data
-public class Roulette implements Serializable {
-
-    @Id
-    String rouletteId;
-    Boolean state;
+public class User implements Serializable {
+    String userId;
     String name;
-    Date openDate;
-    Date closeDate;
 }
