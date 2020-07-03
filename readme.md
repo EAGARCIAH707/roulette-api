@@ -8,3 +8,5 @@ example of a roulette using spring boot and mongodb
 # Plugins
 the lombook plugin is used to generate the getter, setter, equals, and hashcode methods, it can be found in https://mvnrepository.com/artifact/org.projectlombok/lombok
 
+# Documentation
+https://app.swaggerhub.com/apis/s95418/api-documentation/1.0
