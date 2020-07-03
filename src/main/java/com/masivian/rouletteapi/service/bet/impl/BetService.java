@@ -78,7 +78,7 @@ public class BetService implements IBetService {
 
     private void validateRoulette(BetDTO bet) throws BusinessException, NotFoundException {
         Roulette roulette = rouletteService.findById(bet.getRouletteId());
-        if (!roulette.getState()) {
+        if (roulette.getState() == null || !roulette.getState()) {
             throw new BusinessException(IErrorMessages.CLOSED_ROULETTE);
         }
     }

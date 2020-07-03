@@ -28,8 +28,8 @@ public class BetApi {
     }
 
     @PostMapping(IEndpointBet.CREATE)
-    public ResponseEntity<?> bet(@RequestHeader("user-id") String userId,
-                                 @RequestBody BetDTO bet) throws BusinessException, NotFoundException {
+    public ResponseEntity<?> createBet(@RequestHeader("user-id") String userId,
+                                       @RequestBody BetDTO bet) throws BusinessException, NotFoundException {
         BetDTO response = betService.createBet(bet, userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse.builder()
                 .status(HttpStatus.CREATED)
