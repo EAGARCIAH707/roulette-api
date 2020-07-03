@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Data
@@ -13,12 +14,12 @@ import java.time.LocalDateTime;
 public class BaseResponse<T> implements Serializable {
     private T body;
     private HttpStatus status;
-    private LocalDateTime timeResponse;
+    private Timestamp timeResponse;
     private String message;
     private String path;
     private TransactionState transactionState;
 
-    public BaseResponse(T body, HttpStatus status, LocalDateTime timeResponse, String message, String path, TransactionState transactionState) {
+    public BaseResponse(T body, HttpStatus status, Timestamp timeResponse, String message, String path, TransactionState transactionState) {
         this.body = body;
         this.status = status;
         this.timeResponse = timeResponse;

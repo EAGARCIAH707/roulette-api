@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -36,6 +38,7 @@ public class RouletteApi {
                 .message(IResponseMessages.CREATED)
                 .transactionState(TransactionState.OK)
                 .path(IEndpointApi.BASE_PATH.concat(IEndpointRoulette.CREATE))
+                .timeResponse(Timestamp.from(Instant.now()))
                 .build());
     }
 
@@ -48,6 +51,7 @@ public class RouletteApi {
                 .message(IResponseMessages.OK)
                 .transactionState(TransactionState.OK)
                 .path(IEndpointApi.BASE_PATH.concat(IEndpointRoulette.FIND_ALL))
+                .timeResponse(Timestamp.from(Instant.now()))
                 .build());
     }
 
@@ -60,6 +64,7 @@ public class RouletteApi {
                 .message(IResponseMessages.OK)
                 .transactionState(TransactionState.OK)
                 .path(IEndpointApi.BASE_PATH.concat(IEndpointRoulette.OPEN))
+                .timeResponse(Timestamp.from(Instant.now()))
                 .build());
     }
 }
