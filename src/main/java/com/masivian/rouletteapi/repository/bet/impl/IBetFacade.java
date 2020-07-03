@@ -3,7 +3,6 @@ package com.masivian.rouletteapi.repository.bet.impl;
 import com.masivian.rouletteapi.model.entities.Bet;
 import com.masivian.rouletteapi.model.entities.Roulette;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 

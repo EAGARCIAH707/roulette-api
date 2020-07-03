@@ -2,6 +2,7 @@ package com.masivian.rouletteapi.web.rest.bet;
 
 import com.masivian.rouletteapi.commons.constants.api.IEndpointApi;
 import com.masivian.rouletteapi.commons.constants.api.IEndpointBet;
+import com.masivian.rouletteapi.commons.constants.api.IEndpointRoulette;
 import com.masivian.rouletteapi.commons.constants.messages.IResponseMessages;
 import com.masivian.rouletteapi.commons.domains.generic.BetDTO;
 import com.masivian.rouletteapi.commons.domains.response.BaseResponse;
@@ -36,6 +37,7 @@ public class BetApi {
                 .body(response)
                 .message(IResponseMessages.CREATED)
                 .transactionState(TransactionState.OK)
+                .path(IEndpointApi.BASE_PATH.concat(IEndpointBet.CREATE))
                 .build());
     }
 
@@ -47,6 +49,7 @@ public class BetApi {
                 .body(response)
                 .message(IResponseMessages.OK)
                 .transactionState(TransactionState.OK)
+                .path(IEndpointApi.BASE_PATH.concat(IEndpointBet.CLOSE))
                 .build());
     }
 }

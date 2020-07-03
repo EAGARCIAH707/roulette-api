@@ -35,6 +35,7 @@ public class RouletteApi {
                 .body(response)
                 .message(IResponseMessages.CREATED)
                 .transactionState(TransactionState.OK)
+                .path(IEndpointApi.BASE_PATH.concat(IEndpointRoulette.CREATE))
                 .build());
     }
 
@@ -46,6 +47,7 @@ public class RouletteApi {
                 .body(response)
                 .message(IResponseMessages.OK)
                 .transactionState(TransactionState.OK)
+                .path(IEndpointApi.BASE_PATH.concat(IEndpointRoulette.FIND_ALL))
                 .build());
     }
 
@@ -57,6 +59,7 @@ public class RouletteApi {
                 .body(response)
                 .message(IResponseMessages.OK)
                 .transactionState(TransactionState.OK)
+                .path(IEndpointApi.BASE_PATH.concat(IEndpointRoulette.OPEN))
                 .build());
     }
 }

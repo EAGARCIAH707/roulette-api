@@ -4,7 +4,6 @@ import com.masivian.rouletteapi.model.entities.Bet;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
